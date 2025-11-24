@@ -33,6 +33,8 @@ local plugins = {
   { import = "plugins.autopairs" },
   { import = "plugins.none-ls" },
   { import = "plugins.conform" },
+  { import = "plugins.vimtex" },
+  { import = "plugins.which-key" },
 }
 
 local opts = {

@@ -1,3 +1,6 @@
+if true then
+  return {}
+end
 if vim.b.did_my_tex_ftplugin then
   return
 end

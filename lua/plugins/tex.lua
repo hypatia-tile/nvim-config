@@ -1,3 +1,6 @@
+if true then
+  return {}
+end
 return {
   "lervag/vimtex",
   ft = { "tex", "plaintex", "latex" },
