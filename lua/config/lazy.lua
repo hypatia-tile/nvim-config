@@ -21,20 +21,7 @@ local plugins = {
     import = "lazyvim.plugins",
   },
   -- import/override with your plugins
-  { import = "plugins.catppuccin" },
-  { import = "plugins.completion" },
-  { import = "plugins.lsp-config" },
-  { import = "plugins.lualine" },
-  { import = "plugins.telescope" },
-  { import = "plugins.tex" },
-  { import = "plugins.treesitter" },
-  { import = "plugins.rustaceanvim" },
-  { import = "plugins.bap" },
-  { import = "plugins.autopairs" },
-  { import = "plugins.none-ls" },
-  { import = "plugins.conform" },
-  { import = "plugins.vimtex" },
-  { import = "plugins.which-key" },
+  { import = "plugins" },
 }
 
 local opts = {

@@ -1,7 +1,7 @@
 -- set mapleader
 require "vim-options"
 require "config.lazy"
-require "plugins.float_note"
+require "float_note"
 require "shino.commands"
 require "lsp.init"
 -- Color schemes and highlights settings
