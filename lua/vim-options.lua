@@ -13,3 +13,12 @@ vim.g.tex_flavor = "latex" -- Open .tex files in LaTeX mode
 vim.opt.termguicolors = true
 vim.opt.winblend = 0 -- transparency for window
 vim.opt.pumblend = 0 -- transparency for popup menu
+
+vim.filetype.add {
+  pattern = {
+    ["compose.*%.ya?ml"] = "yaml.docker-compose",
+    ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+    [".*/%.github/workflows/.*%.ya?ml"] = "yaml.github-actions",
+    ["%.env.*"] = "sh.env",
+  },
+}
