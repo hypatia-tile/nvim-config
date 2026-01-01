@@ -1,3 +1,10 @@
+-- Global LspAttach autocmd to attach keymaps to all LSP clients
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    require("lsp.keymaps").lsp_keymap(args.buf)
+  end,
+})
+
 local ts_filetypes = {
   "javascript",
   "javascriptreact",

@@ -17,7 +17,7 @@
   rm coc-settings.json
   # In Neovim: :Lazy clean
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #2: Missing LSP Keymaps for Multiple Languages
 - **Files**:
@@ -36,7 +36,7 @@
     end,
   })
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #3: Orphaned LSP Configuration Files
 - **Files**:
@@ -51,7 +51,7 @@
   mv lsp/nil_ls.lua after/lsp/nil_ls.lua
   rmdir lsp/  # Directory should be empty now
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ---
 
@@ -371,11 +371,11 @@
 
 | Priority | Count | Status |
 |----------|-------|--------|
-| Critical | 3 | ❌ 3 open |
+| Critical | 3 | ✅ 3 fixed |
 | High | 10 | ❌ 10 open |
 | Medium | 10 | ❌ 10 open |
 | Low | 6 | ❌ 6 open |
-| **Total** | **29** | **❌ 29 open** |
+| **Total** | **29** | **✅ 3 fixed, ❌ 26 open** |
 
 ---
 
