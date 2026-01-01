@@ -29,6 +29,8 @@ return {
     end,
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
+      -- NOTE: nvim-lspconfig is a dependency of mason-lspconfig but not directly used.
+      -- This config uses Neovim 0.11+ native LSP API (vim.lsp.config/enable) instead.
       "neovim/nvim-lspconfig",
     },
   },

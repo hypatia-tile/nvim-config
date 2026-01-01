@@ -14,6 +14,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Plugin loading strategy:
+-- - lazy = false: Essential plugins needed at startup (vimtex, haskell-tools)
+-- - ft = "...": Language-specific plugins (rustaceanvim, markdown-preview)
+-- - cmd = "...": Command-triggered plugins (tmux-nav)
+-- - event = "...": Event-triggered plugins (most LazyVim plugins)
+-- - No specification: Lazy-loaded by LazyVim based on dependencies
 local plugins = {
   -- add LazyVim and import its plugins
   {
