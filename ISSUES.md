@@ -69,7 +69,7 @@
   rm lua/plugins/tex.lua
   # Remove AstroNvim dependency from vimtex.lua
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #5: Dead TeX ftplugin File
 - **File**: `ftplugin/tex.lua:1-2`
@@ -80,7 +80,7 @@
   ```bash
   rm ftplugin/tex.lua
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #6: Incorrect Mini.nvim Plugin Name
 - **File**: `lua/plugins/autopairs.lua:3`
@@ -92,7 +92,7 @@
   -- Change line 3 to:
   'echasnovski/mini.pairs',
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #7: Duplicate Catppuccin Configuration
 - **Files**:
@@ -125,7 +125,7 @@
   }
   -- Then remove init.lua lines 8-19
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #8: Invalid mason-lspconfig Option
 - **File**: `lua/plugins/lsp-config.lua:21-27`
@@ -139,7 +139,7 @@
     exclude = { "rust_analyzer", "ts_ls", "denols" }
   }
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #9: Formatting Conflict - LSP vs Conform
 - **Files**:
@@ -155,7 +155,7 @@
     require("conform").format({ async = true, lsp_fallback = true })
   end, "Format with Conform")
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #10: None-ls and Conform Overlap
 - **Files**:
@@ -167,7 +167,7 @@
 - **Fix**: Choose one:
   - Option A: Remove none-ls, keep conform (recommended)
   - Option B: Configure none-ls properly, remove conform
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #11: Unused vim-test Dependency
 - **File**: `lua/plugins/none-ls.lua:4`
@@ -175,7 +175,7 @@
 - **Description**: `vim-test` listed as dependency of none-ls but none-ls doesn't require it and there's no vim-test configuration.
 - **Impact**: Unnecessary plugin installation
 - **Fix**: Remove `"vim-test/vim-test"` from dependencies
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #12: Incomplete nvim-dap Configuration
 - **File**: `lua/plugins/bap.lua:5`
@@ -187,7 +187,7 @@
   -- Either configure it or change to:
   lazy = true,  -- Don't load until configured
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #13: Duplicate Lua ftplugin Files
 - **Files**:
@@ -203,7 +203,7 @@
   vim.opt_local.textwidth = 100
   ```
   Then delete `ftplugin/lua.lua`
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ---
 
@@ -219,7 +219,7 @@
 - **Description**: Multiple `vim.notify()` calls spam notifications on startup/file open.
 - **Impact**: Annoying notifications in production use
 - **Fix**: Remove or comment out non-critical notifications
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #15: LazyVim Extras Not Fully Utilized
 - **File**: `lazyvim.json:2-7`
@@ -227,14 +227,14 @@
 - **Description**: LazyVim extras declared (`lang.haskell`, `lang.tex`, etc.) but custom plugin configs created that might conflict.
 - **Impact**: Potential duplication, unclear which config is active
 - **Fix**: Review if custom configs are needed or if LazyVim extras sufficient
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #16: Orphaned LazyVim Plugins
 - **Severity**: Medium
 - **Description**: LazyVim installs many plugins with no custom configuration: bufferline.nvim, flash.nvim, noice.nvim, persistence.nvim, snacks.nvim, grug-far.nvim, trouble.nvim, todo-comments.nvim, nvim-lint, render-markdown.nvim, SchemaStore.nvim, mini.ai, mini.icons
 - **Impact**: Unknown feature set, potential unused plugins
 - **Fix**: Either configure these or disable unwanted LazyVim extras
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #17: Duplicate Float Note Modules
 - **Files**:
@@ -249,7 +249,7 @@
   require "shino.float_note"
   -- Then delete lua/float_note.lua
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #18: Missing Haskell Standard LSP Keymaps
 - **File**: `lua/plugins/haskell-tools.lua:13-18`
@@ -265,7 +265,7 @@
     require("lsp.keymaps").lsp_keymap(bufnr)  -- Add this
   end,
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #19: Inconsistent Quote Style
 - **Files**: Multiple
@@ -273,7 +273,7 @@
 - **Description**: Mix of single quotes and double quotes throughout config.
 - **Impact**: Style inconsistency
 - **Fix**: Standardize on double quotes
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #20: Deprecated Inlay Hint API Usage
 - **File**: `lua/lsp/keymaps.lua:43`
@@ -285,7 +285,7 @@
   local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
   vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #21: Commented Code in TypeScript LSP
 - **File**: `lua/lsp/init.lua:38-40`
@@ -293,7 +293,7 @@
 - **Description**: Commented-out handlers in ts_ls config.
 - **Impact**: Dead code clutter
 - **Fix**: Remove commented code
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #22: Telescope Old Tag Pin
 - **File**: `lua/plugins/telescope.lua:3`
@@ -301,7 +301,7 @@
 - **Description**: Pinned to old tag `0.1.8`. Latest is likely newer.
 - **Impact**: Missing bug fixes and features
 - **Fix**: Update to latest tag or remove pinning
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #23: Missing Float Note Keymap Cleanup
 - **File**: `lua/shino/float_note.lua:61-71`
@@ -309,7 +309,7 @@
 - **Description**: Buffer-local keymaps `qq` and `qy` not added to `b:undo_ftplugin`.
 - **Impact**: Minor - keymaps persist if buffer filetype changes
 - **Fix**: Not critical for nofile buffers, but technically incomplete
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ---
 
@@ -321,7 +321,7 @@
 - **Description**: nvim-lspconfig installed as dependency but never used (using new Neovim 0.11+ built-in API).
 - **Impact**: None - likely required by mason-lspconfig
 - **Fix**: None needed, just noting
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #25: Unnecessary Treesitter Branch Spec
 - **File**: `lua/plugins/treesitter.lua:4`
@@ -329,7 +329,7 @@
 - **Description**: `branch = "main"` unnecessary (main is default).
 - **Impact**: None - just redundant
 - **Fix**: Remove for cleaner config
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #26: Unclear Deprecated Diagnostic Keymaps
 - **File**: `lua/lsp/keymaps.lua:23,25`
@@ -337,14 +337,14 @@
 - **Description**: Comments mark `[d` and `]d` as deprecated but they're still mapped and valid.
 - **Impact**: Confusing comments
 - **Fix**: Remove @deprecated comments (these keymaps are fine)
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #27: Inconsistent Plugin Loading Strategy
 - **Severity**: Low
 - **Description**: Some plugins use `lazy = false`, others `ft = ...`, others `cmd = ...`, some have no spec. No clear pattern.
 - **Impact**: Unclear loading strategy
 - **Fix**: Document rationale or standardize
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #28: .gitignore Completeness
 - **File**: `.gitignore`
@@ -352,7 +352,7 @@
 - **Description**: Should verify lazy-lock.json and plugin-generated files properly tracked/ignored.
 - **Impact**: Minor - may commit unwanted files
 - **Fix**: Review .gitignore
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #29: TypeScript Root Detection Fallback
 - **File**: `lua/lsp/typescript.lua:16`
@@ -363,7 +363,7 @@
   ```lua
   return vim.fn.expand "%:h", false  -- Default to non-Deno
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ---
 
@@ -372,10 +372,10 @@
 | Priority | Count | Status |
 |----------|-------|--------|
 | Critical | 3 | ✅ 3 fixed |
-| High | 10 | ❌ 10 open |
+| High | 10 | ✅ 10 fixed |
 | Medium | 10 | ❌ 10 open |
 | Low | 6 | ❌ 6 open |
-| **Total** | **29** | **✅ 3 fixed, ❌ 26 open** |
+| **Total** | **29** | **✅ 13 fixed, ❌ 16 open** |
 
 ---
 
