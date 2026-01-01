@@ -38,8 +38,8 @@ function M.lsp_keymap(bufnr)
   -- Inlay hints toggle (NVIM ≥0.10)
   if vim.lsp.inlay_hint then
     map("n", "<leader>lh", function()
-      local enabled = vim.lsp.inlay_hint.is_enabled and vim.lsp.inlay_hint.is_enabled(bufnr)
-      vim.lsp.inlay_hint.enable(not enabled, bufnr)
+      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+      vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
     end, "LSP: Toggle inlay hints")
   end
 end
