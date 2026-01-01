@@ -18,7 +18,7 @@ return {
         ensure_installed = {
           "gh_actions_ls",
         },
-        automatic_enable = {
+        automatic_installation = {
           exclude = {
             "rust_analyzer",
             "ts_ls",

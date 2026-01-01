@@ -26,10 +26,10 @@ function M.lsp_keymap(bufnr)
   map("n", "<leader>e", vim.diagnostic.open_float, "Diag: Line info")
   map("n", "<leader>q", vim.diagnostic.setloclist, "Diag: To loclist")
 
-  -- Formatting
+  -- Formatting (use Conform.nvim with LSP fallback)
   map({ "n", "v" }, "<leader>f", function()
-    vim.lsp.buf.format { async = true }
-  end, "LSP: Format")
+    require("conform").format({ async = true, lsp_fallback = true })
+  end, "Format with Conform")
 
   -- Telescope (use if installed; falls back if not)
   local ok, tb = pcall(require, "telescope.builtin")
