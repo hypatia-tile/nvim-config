@@ -105,8 +105,8 @@ LSP configs in `lsp/` directory are separate from plugin definitions:
 - nil LSP with alejandra formatter
 
 ### C/C++
-- clangd via coc.nvim (separate from native LSP)
-- See coc-settings.json for configuration
+- clangd via native Neovim LSP
+- Enabled in `after/ftplugin/c.lua` and `after/ftplugin/cpp.lua`
 
 ## Formatting
 
