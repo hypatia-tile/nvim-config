@@ -19,9 +19,7 @@ function M.lsp_keymap(bufnr)
   map("n", "<leader>sh", vim.lsp.buf.signature_help, "LSP: Signature help")
 
   -- Diagnostics
-  ---@deprecated
   map("n", "[d", vim.diagnostic.goto_prev, "Diag: Prev")
-  ---@deprecated
   map("n", "]d", vim.diagnostic.goto_next, "Diag: Next")
   map("n", "<leader>e", vim.diagnostic.open_float, "Diag: Line info")
   map("n", "<leader>q", vim.diagnostic.setloclist, "Diag: To loclist")

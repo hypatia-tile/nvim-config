@@ -1,7 +1,6 @@
 -- set mapleader
 require "vim-options"
 require "config.lazy"
-require "float_note"
 require "shino.commands"
 require "lsp.init"
 

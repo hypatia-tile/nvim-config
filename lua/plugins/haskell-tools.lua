@@ -15,6 +15,10 @@ return {
           if vim.bo[bufnr].filetype == "cabal" then
             client.server_capabilities.inlayHintProvider = nil
           end
+          -- Attach standard LSP keymaps for Haskell files
+          if vim.bo[bufnr].filetype == "haskell" then
+            require("lsp.keymaps").lsp_keymap(bufnr)
+          end
         end,
       },
     }

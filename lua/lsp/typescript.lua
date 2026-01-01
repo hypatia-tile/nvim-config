@@ -13,7 +13,8 @@ function M.root_dir(bufnr)
   if node_root and node_root ~= "" then
     return node_root, false
   end
-  return vim.fn.expand "%:h", true
+  -- Fallback: standalone file, use tsserver (not Deno)
+  return vim.fn.expand "%:h", false
 end
 
 return M

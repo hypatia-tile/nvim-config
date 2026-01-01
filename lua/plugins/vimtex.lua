@@ -9,10 +9,7 @@ return {
       callback = function(event)
         local wk_avail, wk = pcall(require, "which-key")
         if not wk_avail then
-          vim.notify("Which-Key not available for VimTeX mappings", vim.log.levels.WARN)
           return
-        else
-          vim.notify("Setting up VimTeX Which-Key mappings", vim.log.levels.INFO)
         end
         wk.add {
           buffer = event.buf,

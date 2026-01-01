@@ -1,7 +1,5 @@
-vim.notify("Loading treesitter.lua", vim.log.levels.INFO)
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "main",
   build = ":TSUpdate",
   opts = {
     ensure_installed = {
