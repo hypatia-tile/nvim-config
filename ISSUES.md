@@ -285,7 +285,7 @@
   local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
   vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #21: Commented Code in TypeScript LSP
 - **File**: `lua/lsp/init.lua:38-40`
@@ -301,7 +301,7 @@
 - **Description**: Pinned to old tag `0.1.8`. Latest is likely newer.
 - **Impact**: Missing bug fixes and features
 - **Fix**: Update to latest tag or remove pinning
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #23: Missing Float Note Keymap Cleanup
 - **File**: `lua/shino/float_note.lua:61-71`
@@ -321,7 +321,7 @@
 - **Description**: nvim-lspconfig installed as dependency but never used (using new Neovim 0.11+ built-in API).
 - **Impact**: None - likely required by mason-lspconfig
 - **Fix**: None needed, just noting
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #25: Unnecessary Treesitter Branch Spec
 - **File**: `lua/plugins/treesitter.lua:4`
@@ -344,7 +344,7 @@
 - **Description**: Some plugins use `lazy = false`, others `ft = ...`, others `cmd = ...`, some have no spec. No clear pattern.
 - **Impact**: Unclear loading strategy
 - **Fix**: Document rationale or standardize
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #28: .gitignore Completeness
 - **File**: `.gitignore`
@@ -352,7 +352,7 @@
 - **Description**: Should verify lazy-lock.json and plugin-generated files properly tracked/ignored.
 - **Impact**: Minor - may commit unwanted files
 - **Fix**: Review .gitignore
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ### Issue #29: TypeScript Root Detection Fallback
 - **File**: `lua/lsp/typescript.lua:16`
@@ -363,7 +363,7 @@
   ```lua
   return vim.fn.expand "%:h", false  -- Default to non-Deno
   ```
-- **Status**: ❌ Open
+- **Status**: ✅ Fixed
 
 ---
 
@@ -373,9 +373,9 @@
 |----------|-------|--------|
 | Critical | 3 | ✅ 3 fixed |
 | High | 10 | ✅ 10 fixed |
-| Medium | 10 | ❌ 10 open |
-| Low | 6 | ❌ 6 open |
-| **Total** | **29** | **✅ 13 fixed, ❌ 16 open** |
+| Medium | 10 | ✅ 9 fixed, ⚠️ 1 review |
+| Low | 6 | ✅ 4 fixed, ⚠️ 2 review |
+| **Total** | **29** | **✅ 25 fixed, ⚠️ 4 review** |
 
 ---
 
