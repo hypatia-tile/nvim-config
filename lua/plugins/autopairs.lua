@@ -1,6 +1,6 @@
 return {
   {
-    'nvim-mini/mini.pairs',
+    'echasnovski/mini.pairs',
     main = "mini.pairs",
     opts = {
       mappings = {
