@@ -1,3 +1,4 @@
+vim.env.XDG_STATE_HOME = "/tmp"
 -- set mapleader
 require "vim-options"
 require "config.lazy"
