@@ -1,6 +1,7 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
+  lazy = false,
   priority = 1000,
   opts = {
     flavour = "mocha",
@@ -15,7 +16,13 @@ return {
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
-    vim.cmd.colorscheme "catppuccin-mocha"
+
+    -- Try to set catppuccin, fallback to tokyonight-moon if it fails
+    local ok = pcall(vim.cmd.colorscheme, "catppuccin-mocha")
+    if not ok then
+      vim.notify("Failed to load catppuccin, falling back to tokyonight-moon", vim.log.levels.WARN)
+      vim.cmd.colorscheme "tokyonight-moon"
+    end
 
     -- Custom Telescope selection highlight
     vim.cmd "highlight TelescopeSelection cterm=bold gui=bold guifg=#a6e3a1 guibg=#181825"

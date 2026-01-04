@@ -40,7 +40,7 @@ local opts = {
 
 require("lazy").setup({
   spec = plugins,
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "catppuccin-mocha", "tokyonight-moon" } },
   checker = {
     enabled = true,
     notify = false,
