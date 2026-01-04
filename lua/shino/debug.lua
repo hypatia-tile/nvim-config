@@ -3,7 +3,7 @@ local M = {}
 -- Configuration
 local config = {
   enabled = vim.env.NVIM_DEBUG ~= nil or false,
-  log_dir = vim.fn.stdpath("cache"),
+  log_dir = vim.fn.stdpath "cache",
   tracers = {
     colorscheme = true,
     lsp = false,
@@ -24,9 +24,9 @@ local function write_log(filename, lines)
 end
 
 ---Format timestamp
----@return string
+---@return string|osdate
 local function timestamp()
-  return os.date("%F %T")
+  return os.date "%F %T"
 end
 
 ---Enable colorscheme change tracing
@@ -71,12 +71,7 @@ function M.trace_lsp()
       local client = vim.lsp.get_client_by_id(args.data.client_id)
       if client then
         write_log("lsp-trace.log", {
-          ("[%s] LspAttach: %s (id=%d) to buffer %d"):format(
-            timestamp(),
-            client.name,
-            client.id,
-            args.buf
-          ),
+          ("[%s] LspAttach: %s (id=%d) to buffer %d"):format(timestamp(), client.name, client.id, args.buf),
           ("  root_dir=%s"):format(tostring(client.config.root_dir)),
           "",
         })
@@ -161,8 +156,8 @@ function M.setup(opts)
     end
 
     -- Open in a new buffer
-    vim.cmd("new")
-    vim.cmd("setlocal buftype=nofile bufhidden=wipe noswapfile")
+    vim.cmd "new"
+    vim.cmd "setlocal buftype=nofile bufhidden=wipe noswapfile"
     local lines = { "=== Neovim Debug Logs ===", "" }
 
     for _, logfile in ipairs(log_files) do
