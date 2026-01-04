@@ -1,6 +1,5 @@
 local M = {}
 
-
 ---Dispatch the part of determining floating window layout.
 ---Specify the ratio of the total width/height (0 < x < 1) or absolute size (x >= 1).
 ---@param opts table|nil
@@ -32,9 +31,9 @@ local function get_or_create_buf(name)
     return bufnr
   end
   bufnr = vim.api.nvim_create_buf(true, false) -- listed buffer
-  vim.api.nvim_buf_set_name(bufnr, name)       --stable lookup key
-  vim.bo[bufnr].buftype = "nofile"             -- scratch semantics
-  vim.bo[bufnr].bufhidden = "hide"             -- persist when window closes
+  vim.api.nvim_buf_set_name(bufnr, name) --stable lookup key
+  vim.bo[bufnr].buftype = "nofile" -- scratch semantics
+  vim.bo[bufnr].bufhidden = "hide" -- persist when window closes
   vim.bo[bufnr].swapfile = false
   return bufnr
 end
@@ -64,7 +63,7 @@ local function open_float(buf, opts)
     end
   end, { buffer = buf, nowait = true, silent = true })
   vim.keymap.set("n", "qy", function()
-    vim.cmd.normal("ggyG")
+    vim.cmd.normal "ggyG"
     if vim.api.nvim_win_is_valid(win) then
       vim.api.nvim_win_close(win, true)
     end

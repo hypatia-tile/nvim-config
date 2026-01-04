@@ -5,9 +5,9 @@ end, {
 })
 
 -- FloatNote command
-local float_note = require("shino.float_note")
+local float_note = require "shino.float_note"
 vim.api.nvim_create_user_command("FloatNote", function()
-  float_note.toggle("float://note", { width = 0.5, height = 0.5, title = "Note" })
+  float_note.toggle("float://note", { width = 0.8, height = 0.8, title = "Note" })
 end, {
   nargs = "*",
   desc = "Toggle persistent floating scratch note",
