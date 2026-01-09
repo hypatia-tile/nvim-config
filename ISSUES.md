@@ -238,18 +238,13 @@
 
 ### Issue #17: Duplicate Float Note Modules
 - **Files**:
-  - `lua/float_note.lua` (wrapper)
+  - `lua/float_note.lua` (wrapper - deleted)
   - `lua/shino/float_note.lua` (actual implementation)
 - **Severity**: Medium
 - **Description**: Two modules exist. First just wraps the second - unnecessary indirection.
 - **Impact**: Confusing organization
-- **Fix**:
-  ```lua
-  -- In init.lua, change to:
-  require "shino.float_note"
-  -- Then delete lua/float_note.lua
-  ```
-- **Status**: ❌ Open
+- **Fix**: Deleted `lua/float_note.lua` wrapper, moved FloatNote command to `lua/shino/commands.lua`, removed `require "float_note"` from `init.lua`. Fixed in commit 738c82e (2026-01-02).
+- **Status**: ✅ Fixed
 
 ### Issue #18: Missing Haskell Standard LSP Keymaps
 - **File**: `lua/plugins/haskell-tools.lua:13-18`
