@@ -178,7 +178,7 @@
 - **Status**: ✅ Fixed
 
 ### Issue #12: Incomplete nvim-dap Configuration
-- **File**: `lua/plugins/bap.lua:5`
+- **File**: `lua/plugins/dap.lua:5`
 - **Severity**: High
 - **Description**: nvim-dap installed with `lazy = false` (loaded immediately) but only has a TODO comment. No actual configuration.
 - **Impact**: Plugin loaded at startup but does nothing, wastes resources
@@ -214,7 +214,7 @@
   - `lua/lsp/init.lua:14,34`
   - `lua/plugins/treesitter.lua:1`
   - `lua/plugins/vimtex.lua:17,20`
-  - `lua/plugins/bap.lua:6`
+  - `lua/plugins/dap.lua:6`
 - **Severity**: Medium
 - **Description**: Multiple `vim.notify()` calls spam notifications on startup/file open.
 - **Impact**: Annoying notifications in production use
