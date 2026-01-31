@@ -8,6 +8,17 @@ return {
         hover = {
           enable = true,
         },
+        hoogle = {
+          mode = "telescope-local", -- Use telescope to search local docs
+        },
+        repl = {
+          handler = "builtin", -- Use Neovim's terminal
+          prefer = "cabal", -- Prefer cabal over stack
+          auto_focus = true, -- Jump to REPL when toggled
+        },
+        codeLens = {
+          autoRefresh = true, -- Automatically update code lenses
+        },
       },
       hls = {
         on_attach = function(client, bufnr)
