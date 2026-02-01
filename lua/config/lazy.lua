@@ -21,11 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 -- - event = "...": Event-triggered plugins (most LazyVim plugins)
 -- - No specification: Lazy-loaded by LazyVim based on dependencies
 local plugins = {
-  -- add LazyVim and import its plugins
-  {
-    "LazyVim/LazyVim",
-    import = "lazyvim.plugins",
-  },
   -- import/override with your plugins
   { import = "plugins" },
 }
