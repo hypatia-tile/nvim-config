@@ -14,6 +14,9 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 0 -- transparency for window
 vim.opt.pumblend = 0 -- transparency for popup menu
 
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 vim.filetype.add {
   pattern = {
     ["compose.*%.ya?ml"] = "yaml.docker-compose",
