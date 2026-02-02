@@ -11,6 +11,10 @@ require("shino.debug").setup {
   },
 }
 
+-- Keymaps
+vim.keymap.set("n", "H", ":bprevious<CR>", { silent = true, noremap = true, desc = "Go to previous tab" })
+vim.keymap.set("n", "L", ":bnext<CR>", { silent = true, noremap = true, desc = "Go to next tab" })
+
 -- set mapleader
 require "vim-options"
 require "config.lazy"
