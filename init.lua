@@ -17,6 +17,7 @@ vim.keymap.set("n", "L", ":bnext<CR>", { silent = true, noremap = true, desc = "
 
 -- set mapleader
 require "vim-options"
+require "autocmds"
 require "config.lazy"
 require "shino.commands"
 require "lsp.init"
