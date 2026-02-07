@@ -27,3 +27,21 @@ vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo.foldlevel = 99
 vim.wo.foldmethod = "expr"
 vim.wo.foldtext = ""
+
+-- Arrow * Different interpretation of bytes
+vim.keymap.set("i", "<Right>", "→", {
+  noremap = true,
+  desc = "Write right arrow",
+})
+vim.keymap.set("i", "<Left>", "←", {
+  noremap = true,
+  desc = "Write left arrow",
+})
+vim.keymap.set("i", "<Down>", "↓", {
+  noremap = true,
+  desc = "Write down arrow",
+})
+vim.keymap.set("i", "<Up>", "↑", {
+  noremap = true,
+  desc = "Write up arrow",
+})
