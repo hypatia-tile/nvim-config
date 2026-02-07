@@ -9,6 +9,7 @@ return {
         ["`"] = false,
         ["{"] = false,
         ["("] = false,
+        ["["] = false,
       },
     },
   },
