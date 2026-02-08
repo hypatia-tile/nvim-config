@@ -13,10 +13,8 @@ This is a LazyVim-based Neovim configuration for multi-language development, wit
 1. **init.lua** - Main entry point that loads modules in this order:
    - `vim-options.lua` - Global settings (leader keys, tabs, clipboard, file type detection)
    - `config.lazy` - Plugin manager setup
-   - `float_note` - Custom floating note feature
    - `shino.commands` - Custom user commands
    - `lsp.init` - LSP configuration and TypeScript/Deno detection
-   - Catppuccin theme setup with transparency toggle
    - Treesitter-based folding configuration
 
 2. **Plugin Loading** - Lazy.nvim loads plugins from:
@@ -65,15 +63,10 @@ LSP configs in `lsp/` directory are separate from plugin definitions:
 
 #### Floating Note System
 
-`lua/shino/float_note.lua` implements a persistent scratch buffer in a floating window:
-- Buffer persists across window closes (bufhidden=hide)
-- Centered layout with configurable width/height (ratio 0-1 or absolute pixels)
-- Keybindings: `qq` to close, `qy` to yank all and close
-- Toggled via `<leader>o` keybind
-
-#### Transparency Toggle
-
-`init.lua:22-27` - Dynamically toggles Catppuccin's transparent_background by recompiling the theme.
+Uses `floating-note.nvim` plugin (`lua/plugins/floating-note.lua`) for a persistent scratch buffer in a floating window:
+- Managed by external plugin: https://github.com/hypatia-tile/floating-note.nvim
+- Default keybinding: `<leader>o` to toggle the floating note
+- Plugin handles buffer persistence and window management
 
 ## Language-Specific Details
 
