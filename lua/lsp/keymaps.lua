@@ -26,19 +26,13 @@ function M.lsp_keymap(bufnr)
 
   -- Formatting (use Conform.nvim with LSP fallback)
   map({ "n", "v" }, "<leader>f", function()
-    require("conform").format({ async = true, lsp_fallback = true })
+    require("conform").format { async = true, lsp_fallback = true }
   end, "Format with Conform")
-
-  -- Telescope (use if installed; falls back if not)
-  local ok, tb = pcall(require, "telescope.builtin")
-  map("n", "gr", ok and tb.lsp_references or vim.lsp.buf.references, "LSP: References")
-  map("n", "<leader>ss", ok and tb.lsp_document_symbols or vim.lsp.buf.document_symbol, "LSP: Doc symbols")
-  map("n", "<leader>sS", ok and tb.lsp_workspace_symbols or vim.lsp.buf.workspace_symbol, "LSP: WS symbols")
 
   -- Inlay hints toggle (NVIM ≥0.10)
   if vim.lsp.inlay_hint then
     map("n", "<leader>lh", function()
-      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+      local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
       vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
     end, "LSP: Toggle inlay hints")
   end
