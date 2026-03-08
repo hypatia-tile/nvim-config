@@ -11,6 +11,10 @@ return {
         hoogle = {
           mode = "telescope-local", -- Use telescope to search local docs
         },
+        hlint = {
+          code_actions_on = true,
+          diagnostic_on = true,
+        },
         repl = {
           handler = "builtin", -- Use Neovim's terminal
           prefer = "cabal", -- Prefer cabal over stack
@@ -28,6 +32,8 @@ return {
           end
           -- Attach standard LSP keymaps for Haskell files
           if vim.bo[bufnr].filetype == "haskell" then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
             require("lsp.keymaps").lsp_keymap(bufnr)
           end
         end,
