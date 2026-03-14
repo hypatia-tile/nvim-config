@@ -11,10 +11,6 @@ return {
         hoogle = {
           mode = "telescope-local", -- Use telescope to search local docs
         },
-        hlint = {
-          code_actions_on = true,
-          diagnostic_on = true,
-        },
         repl = {
           handler = "builtin", -- Use Neovim's terminal
           prefer = "cabal", -- Prefer cabal over stack
