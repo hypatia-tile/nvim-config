@@ -4,10 +4,7 @@ return {
     require("conform").setup {
       -- Configure individual formatters
       formatters = {
-        ormolu = {
-          -- Pass language extensions to ormolu
-          -- Note: Ormolu does NOT support configuring formatting style (line length, indentation, etc.)
-          -- It only supports configuring language extensions that affect parsing
+        fourmolu = {
           prepend_args = {
             -- Common GHC extensions (uncomment the ones your projects use)
             -- "-o", "-XOverloadedStrings",
@@ -22,7 +19,7 @@ return {
       },
       formatters_by_ft = {
         lua = { "stylua" },
-        haskell = { "ormolu" },
+        haskell = { "fourmolu" },
         nix = { "alejandra" },
       },
       -- Format on save for all languages EXCEPT Haskell

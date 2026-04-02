@@ -24,4 +24,11 @@ return {
       require("telescope").load_extension "ui-select"
     end,
   },
+  {
+    "luc-tielen/telescope_hoogle",
+    config = function()
+      local telescope = require "telescope"
+      telescope.load_extension "hoogle"
+    end,
+  },
 }
