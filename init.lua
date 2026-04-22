@@ -29,6 +29,23 @@ vim.wo.foldmethod = "expr"
 vim.wo.foldtext = ""
 
 -- Arrow * Different interpretation of bytes
+vim.keymap.set("n", "<Right>", "<c-w>>", {
+  noremap = true,
+  desc = "Write right arrow",
+})
+vim.keymap.set("n", "<Left>", "<c-w><", {
+  noremap = true,
+  desc = "Write left arrow",
+})
+vim.keymap.set("n", "<Down>", "<c-w>-", {
+  noremap = true,
+  desc = "Write down arrow",
+})
+vim.keymap.set("n", "<Up>", "<c-w>+", {
+  noremap = true,
+  desc = "Write up arrow",
+})
+
 vim.keymap.set("i", "<Right>", "→", {
   noremap = true,
   desc = "Write right arrow",
