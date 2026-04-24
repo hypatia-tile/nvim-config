@@ -24,7 +24,7 @@ return {
       callback = function(args)
         local bufnr = args.buf
         -- Enable inline completion
-        vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+        vim.lsp.inline_completion.enable(false, { bufnr = bufnr })
 
         vim.keymap.set("i", "<c-e>", function()
           vim.lsp.inline_completion.get()
