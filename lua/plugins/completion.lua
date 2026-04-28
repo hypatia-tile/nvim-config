@@ -20,7 +20,17 @@ return {
         ["<Tab>"] = { "select_next", "fallback" },
         ["<S-Tab>"] = { "select_prev", "fallback" },
       },
-      sources = { default = { "lsp", "path", "buffer", "snippets" } },
+      sources = {
+        default = { "lazydev", "lsp", "path", "buffer", "snippets" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            -- make lazydev completions top priority (see `:h blink.cmp`)
+            score_offset = 100,
+          },
+        },
+      },
       signature = { enabled = true }, -- show function signatures as you type
       -- If you use LuaSnip:
       snippets = { preset = "luasnip" },
