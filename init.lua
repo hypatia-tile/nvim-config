@@ -1,5 +1,3 @@
-vim.env.XDG_STATE_HOME = "/tmp"
-
 -- Debug/profiling module (enable with NVIM_DEBUG=1)
 require("shino.debug").setup {
   enabled = vim.env.NVIM_DEBUG ~= nil,
