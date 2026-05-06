@@ -23,10 +23,10 @@ require "shino.commands"
 require "lsp.init"
 
 -- Folding settings
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.wo.foldlevel = 99
-vim.wo.foldmethod = "expr"
-vim.wo.foldtext = ""
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = "expr"
+vim.opt.foldtext = ""
 
 -- Arrow * Different interpretation of bytes
 vim.keymap.set("n", "<Right>", "<c-w>>", {
