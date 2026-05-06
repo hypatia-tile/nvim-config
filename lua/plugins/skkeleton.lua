@@ -9,9 +9,9 @@ return {
   config = function()
     vim.fn["skkeleton#config"] {
       globalDictionaries = {
-        vim.fn.expand(vim.fn.stdpath "config" .. "/skk/SKK-JISYO.L"),
+        vim.fn.stdpath "config" .. "/skk/SKK-JISYO.L",
       },
-      userDictionary = vim.fn.expand(vim.fn.stdpath "config" .. "/skk/user-dict"),
+      userDictionary = vim.fn.stdpath "config" .. "/skk/user-dict",
       eggLikeNewline = true,
     }
   end,
