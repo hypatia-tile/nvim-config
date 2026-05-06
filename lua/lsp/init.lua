@@ -13,36 +13,44 @@ local ts_filetypes = {
   "typescript.tsx",
   "json",
 }
+vim.lsp.config("denols", {
+  filetypes = ts_filetypes,
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = true,
+    suggest = {
+      imports = {
+        hosts = {
+          ["https://deno.land"] = true,
+        },
+      },
+    },
+  },
+})
+vim.lsp.config("ts_ls", {
+  filetypes = ts_filetypes,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = ts_filetypes,
   callback = function()
-    local root_dir, is_deno = require("lsp.typescript").root_dir(vim.api.nvim_get_current_buf())
+    local bufnr = vim.api.nvim_get_current_buf()
+    local root_dir, is_deno = require("lsp.typescript").root_dir(bufnr)
     if is_deno then
-      local deno_opts = {
-        filetypes = ts_filetypes,
+      vim.lsp.start {
+        name = "denols",
         root_dir = root_dir,
-        init_options = {
-          enable = true,
-          lint = true,
-          unstable = true,
-          suggest = {
-            imports = {
-              hosts = {
-                ["https://deno.land"] = true,
-              },
-            },
-          },
-        },
+        bufnr = bufnr,
+        cmd = { "deno", "lsp" },
       }
-      vim.lsp.config("denols", deno_opts)
-      vim.lsp.enable "denols"
     else
-      local ts_opts = {
-        filetypes = ts_filetypes,
+      vim.lsp.start {
+        name = "ts_ls",
         root_dir = root_dir,
+        bufnr = bufnr,
+        cmd = { "typescript-language-server", "--stdio" },
       }
-      vim.lsp.config("ts_ls", ts_opts)
-      vim.lsp.enable "ts_ls"
     end
   end,
 })
