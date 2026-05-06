@@ -20,24 +20,18 @@ Format-on-save via Conform is enabled for Lua (stylua), Nix (alejandra), and dis
 
 ## Debugging
 
-Enable the debug module with the `NVIM_DEBUG` environment variable:
-```bash
-NVIM_DEBUG=1 nvim
-```
-
-Inside Neovim, `:DebugLogs` opens all trace logs; `:DebugClear` removes them. Logs land in `~/.cache/nvim/`.
+Use `nvim --startuptime /tmp/startup.log` to profile startup time.
 
 ## Architecture
 
 ### Entry Point
 
 `init.lua` bootstraps in this order:
-1. `shino.debug` — optional tracing (no-op unless `NVIM_DEBUG` is set)
-2. `vim-options` — global options and mapleader (`<Space>`)
-3. `autocmds` — global autocmds
-4. `config.lazy` — lazy.nvim bootstrap, loads all `lua/plugins/*.lua`
-5. `shino.commands` — user commands (`:InitLua`)
-6. `lsp.init` — global `LspAttach` handler and TypeScript/Deno detection
+1. `vim-options` — global options and mapleader (`<Space>`)
+2. `autocmds` — global autocmds
+3. `config.lazy` — lazy.nvim bootstrap, loads all `lua/plugins/*.lua`
+4. `shino.commands` — user commands (`:InitLua`)
+5. `lsp.init` — global `LspAttach` handler and TypeScript/Deno detection
 
 ### Plugin Structure
 
@@ -98,7 +92,6 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 
 ### Custom Modules (`lua/shino/`)
 
-- `debug.lua` — opt-in tracing for colorschemes, LSP, plugins, startup. Logs land in `~/.cache/nvim/` (controlled by `stdpath("cache")`, not `XDG_STATE_HOME`).
 - `commands.lua` — `:InitLua` (open init.lua in editor)
 
 ### Colorscheme
