@@ -27,9 +27,6 @@ return {
       },
     })
   end,
-  on_attach = function(_, bufnr)
-    require("lsp.keymaps").lsp_keymap(bufnr)
-  end,
   settings = {
     Lua = {
       diagnostics = {
