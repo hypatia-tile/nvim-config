@@ -23,7 +23,7 @@
   "oil.nvim": { "branch": "master", "commit": "0fcc83805ad11cf714a949c98c605ed717e0b83e" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "rustaceanvim": { "branch": "master", "commit": "88575b98bb9937fb9983ddec5e532b67e75ce677" },
-  "skkeleton": { "branch": "main", "commit": "b530eac5a859ce2f8fa4d99fa5cd83b9d3199086" },
+  "skkeleton": { "branch": "main", "commit": "770b265dd115dba96ea5314642e35764654ef08f" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope.nvim": { "branch": "master", "commit": "f04ab730b8f9c6bf3f54a206d0dcddfd70c52d59" },
   "telescope_hoogle": { "branch": "master", "commit": "14be34fd5c464e3da0992ad094f157b0b8b098f9" },
