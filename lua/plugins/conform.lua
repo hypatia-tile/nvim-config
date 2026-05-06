@@ -22,9 +22,10 @@ return {
         haskell = { "fourmolu" },
         nix = { "alejandra" },
       },
-      -- Format on save for all languages EXCEPT Haskell
       format_on_save = function(bufnr)
-        -- Disable with a global or buffer-local variable
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
         if vim.bo[bufnr].filetype == "haskell" then
           return
         end
