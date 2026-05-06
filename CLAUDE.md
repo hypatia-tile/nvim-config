@@ -36,7 +36,7 @@ Inside Neovim, `:DebugLogs` opens all trace logs; `:DebugClear` removes them. Lo
 2. `vim-options` — global options and mapleader (`<Space>`)
 3. `autocmds` — global autocmds
 4. `config.lazy` — lazy.nvim bootstrap, loads all `lua/plugins/*.lua`
-5. `shino.commands` — user commands (`:InitLua`, `:FloatNote`, transparency toggle)
+5. `shino.commands` — user commands (`:InitLua`)
 6. `lsp.init` — global `LspAttach` handler and TypeScript/Deno detection
 
 ### Plugin Structure
@@ -47,7 +47,7 @@ All plugins live in `lua/plugins/*.lua` — each file returns a lazy.nvim plugin
 
 LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 - **Global keymaps**: `lua/lsp/keymaps.lua` — attached on every `LspAttach` event
-- **TypeScript/Deno detection**: `lua/lsp/typescript.lua` — detects `deno.json` vs `package.json` to decide between `denols` and `ts_ls`
+- **TypeScript/Deno detection**: `lua/lsp/typescript.lua` — detects `deno.json` vs `package.json` to decide between `denols` and `ts_ls`. Static options are set once via `vim.lsp.config`; `vim.lsp.start` is called per-buffer so exactly one server attaches per file.
 - **Per-server configs**: `after/lsp/<server>.lua` — lua_ls, nil_ls, copilot, gh_actions_ls
 - **Language-specific plugins** bypass the global attach: rustaceanvim (Rust), haskell-tools.nvim (Haskell), lean.nvim (Lean), nvim-jdtls (Java)
 
@@ -98,8 +98,8 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 
 ### Custom Modules (`lua/shino/`)
 
-- `debug.lua` — opt-in tracing for colorschemes, LSP, plugins, startup
-- `commands.lua` — `:InitLua`, `:FloatNote`, transparency toggle keymap
+- `debug.lua` — opt-in tracing for colorschemes, LSP, plugins, startup. Logs land in `~/.cache/nvim/` (controlled by `stdpath("cache")`, not `XDG_STATE_HOME`).
+- `commands.lua` — `:InitLua` (open init.lua in editor)
 
 ### Colorscheme
 
