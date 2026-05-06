@@ -21,6 +21,7 @@ return {
     vim.api.nvim_set_hl(0, "ComplHintMore", vim.tbl_extend("force", hlm, { underline = true }))
     -- Enable inline completion via LspAttach autocmd
     vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("CopilotAttach", { clear = true }),
       callback = function(args)
         local bufnr = args.buf
         -- Enable inline completion
