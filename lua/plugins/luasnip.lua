@@ -27,6 +27,8 @@ return {
       { lang = "lua", file = "lua" },
       { lang = "all", file = "all" },
       { lang = "lean", file = "lean" },
+      { lang = "c", file = "c" },
+      { lang = "cpp", file = "c" },
     }
 
     for _, spec in ipairs(snippet_files) do
@@ -34,10 +36,7 @@ return {
       if ok then
         ls.add_snippets(spec.lang, snippets)
       else
-        vim.notify(
-          string.format("Failed to load snippets for %s: %s", spec.lang, snippets),
-          vim.log.levels.WARN
-        )
+        vim.notify(string.format("Failed to load snippets for %s: %s", spec.lang, snippets), vim.log.levels.WARN)
       end
     end
   end,
