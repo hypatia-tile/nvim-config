@@ -24,11 +24,12 @@ return {
 
     -- Load snippets from separate files
     local snippet_files = {
-      { lang = "lua", file = "lua" },
       { lang = "all", file = "all" },
-      { lang = "lean", file = "lean" },
       { lang = "c", file = "c" },
       { lang = "cpp", file = "c" },
+      { lang = "lean", file = "lean" },
+      { lang = "lua", file = "lua" },
+      { lang = "nix", file = "nix" },
     }
 
     for _, spec in ipairs(snippet_files) do
