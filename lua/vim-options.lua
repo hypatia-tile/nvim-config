@@ -15,6 +15,11 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 0 -- transparency for window
 vim.opt.pumblend = 0 -- transparency for popup menu
 
+-- emphasize cursorline
+vim.opt.cursorline = true
+vim.cmd [[highlight CursorLine guibg=NONE ctermbg=NONE]]
+vim.cmd [[highlight CursorLineNr guifg=#ff9e64 gui=bold]]
+
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
