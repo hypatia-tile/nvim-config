@@ -2,7 +2,29 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    event = "VeryLazy",
     config = function()
+      require("telescope").setup {
+        defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+            "--hidden",
+            "--glob=!.git/**",
+          },
+          file_ignore_patterns = { "^%.git/" },
+        },
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
+      }
       local builtin = require "telescope.builtin"
       vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope: Find files" })
       vim.keymap.set("n", "sg", builtin.live_grep, { desc = "Telescope: Live grep" })
