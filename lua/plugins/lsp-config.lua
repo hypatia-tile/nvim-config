@@ -15,9 +15,6 @@ return {
     "mason-org/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = {
-          "gh_actions_ls",
-        },
         automatic_installation = {
           exclude = {
             "rust_analyzer",
