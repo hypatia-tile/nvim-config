@@ -14,8 +14,9 @@ return {
     -- 'tomtom/tcomment_vim',           -- for commenting
   },
 
-  ---@type lean.Config
-  opts = { -- see the manual for full configuration options
-    mappings = true,
-  },
+  config = function()
+    vim.g.lean_config = {
+      mappings = true,
+    }
+  end,
 }
