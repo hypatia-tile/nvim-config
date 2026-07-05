@@ -1,6 +1,6 @@
 return {
   "mrcjkb/haskell-tools.nvim",
-  version = "^6", -- Recommended
+  version = "^10",
   lazy = false, -- must load at startup; haskell-tools manages its own LSP attach
   config = function()
     vim.g.haskell_tools = {
