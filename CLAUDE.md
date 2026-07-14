@@ -70,7 +70,7 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 
 ### Japanese Input
 
-**skkeleton** + **denops.vim** provides SKK Japanese input. Toggle with `<C-j>` in insert mode. Dictionary at `skk/SKK-JISYO.L`, user dict at `skk/user-dict`.
+**skkeleton** + **denops.vim** provides SKK Japanese input. Toggle with `<C-j>` in insert mode. Dictionary at `~/.local/share/skk/SKK-JISYO.L` (placed by dotfiles-mac via Home Manager), user dict at `stdpath("data")/skk/user-dict` — both outside the config dir, which is a read-only Nix store path.
 
 ### Key Global Keymaps
 
