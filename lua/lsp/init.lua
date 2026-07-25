@@ -28,30 +28,17 @@ vim.lsp.config("denols", {
     },
   },
 })
-vim.lsp.config("ts_ls", {
-  filetypes = ts_filetypes,
-})
-
 vim.api.nvim_create_autocmd("FileType", {
   pattern = ts_filetypes,
   callback = function()
     local bufnr = vim.api.nvim_get_current_buf()
-    local root_dir, is_deno = require("lsp.typescript").root_dir(bufnr)
-    if is_deno then
-      vim.lsp.start {
-        name = "denols",
-        root_dir = root_dir,
-        bufnr = bufnr,
-        cmd = { "deno", "lsp" },
-      }
-    else
-      vim.lsp.start {
-        name = "ts_ls",
-        root_dir = root_dir,
-        bufnr = bufnr,
-        cmd = { "typescript-language-server", "--stdio" },
-      }
-    end
+    local root_dir = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" }) or vim.fn.expand "%:h"
+    vim.lsp.start {
+      name = "denols",
+      root_dir = root_dir,
+      bufnr = bufnr,
+      cmd = { "deno", "lsp" },
+    }
   end,
 })
 
