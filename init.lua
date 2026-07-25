@@ -1,6 +1,7 @@
 -- Keymaps
-vim.keymap.set("n", "H", ":bprevious<CR>", { silent = true, noremap = true, desc = "Go to previous tab" })
-vim.keymap.set("n", "L", ":bnext<CR>", { silent = true, noremap = true, desc = "Go to next tab" })
+local keymap = require "shino.keymap"
+keymap.nmap("H", ":bprevious<CR>", "Go to previous tab")
+keymap.nmap("L", ":bnext<CR>", "Go to next tab")
 
 -- set mapleader
 require "vim-options"
@@ -15,37 +16,14 @@ vim.opt.foldlevel = 99
 vim.opt.foldmethod = "expr"
 vim.opt.foldtext = ""
 
--- Arrow * Different interpretation of bytes
-vim.keymap.set("n", "<Right>", "<c-w>>", {
-  noremap = true,
-  desc = "Write right arrow",
-})
-vim.keymap.set("n", "<Left>", "<c-w><", {
-  noremap = true,
-  desc = "Write left arrow",
-})
-vim.keymap.set("n", "<Down>", "<c-w>-", {
-  noremap = true,
-  desc = "Write down arrow",
-})
-vim.keymap.set("n", "<Up>", "<c-w>+", {
-  noremap = true,
-  desc = "Write up arrow",
-})
+-- Arrow keys resize windows in normal mode
+keymap.nmap("<Right>", "<c-w>>", "Write right arrow")
+keymap.nmap("<Left>", "<c-w><", "Write left arrow")
+keymap.nmap("<Down>", "<c-w>-", "Write down arrow")
+keymap.nmap("<Up>", "<c-w>+", "Write up arrow")
 
-vim.keymap.set("i", "<Right>", "→", {
-  noremap = true,
-  desc = "Write right arrow",
-})
-vim.keymap.set("i", "<Left>", "←", {
-  noremap = true,
-  desc = "Write left arrow",
-})
-vim.keymap.set("i", "<Down>", "↓", {
-  noremap = true,
-  desc = "Write down arrow",
-})
-vim.keymap.set("i", "<Up>", "↑", {
-  noremap = true,
-  desc = "Write up arrow",
-})
+-- Arrow keys insert literal Unicode arrows in insert mode
+keymap.imap("<Right>", "→", "Write right arrow")
+keymap.imap("<Left>", "←", "Write left arrow")
+keymap.imap("<Down>", "↓", "Write down arrow")
+keymap.imap("<Up>", "↑", "Write up arrow")

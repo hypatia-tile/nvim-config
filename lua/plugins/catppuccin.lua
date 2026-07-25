@@ -28,11 +28,11 @@ return {
     vim.cmd "highlight TelescopeSelection cterm=bold gui=bold guifg=#a6e3a1 guibg=#181825"
 
     -- Transparency toggle keymap
-    vim.keymap.set("n", "<leader>tp", function()
+    require("shino.keymap").nmap("<leader>tp", function()
       local cat = require "catppuccin"
       cat.options.transparent_background = not cat.options.transparent_background
       cat.compile()
       vim.cmd.colorscheme "catppuccin-mocha"
-    end, { desc = "Toggle transparency" })
+    end, "Toggle transparency")
   end,
 }

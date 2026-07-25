@@ -1,40 +1,40 @@
+local keymap = require "shino.keymap"
+
 local M = {}
 function M.lsp_keymap(bufnr)
-  local function map(mode, lhs, rhs, desc)
-    vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, noremap = true, desc = desc })
-  end
+  local opts = { buffer = bufnr }
 
   -- Basics
-  map("n", "K", vim.lsp.buf.hover, "LSP: Hover")
-  map("n", "<leader>gd", function()
+  keymap.nmap("K", vim.lsp.buf.hover, "LSP: Hover", opts)
+  keymap.nmap("<leader>gd", function()
     vim.cmd "belowright split"
     vim.lsp.buf.definition()
-  end, "LSP: Go to definition (vsplit)")
-  map("n", "gd", vim.lsp.buf.definition, "LSP: Go to definition")
-  map("n", "gD", vim.lsp.buf.declaration, "LSP: Go to declaration")
-  map("n", "gi", vim.lsp.buf.implementation, "LSP: Go to implementation")
-  map("n", "gt", vim.lsp.buf.type_definition, "LSP: Go to type")
-  map("n", "<leader>rn", vim.lsp.buf.rename, "LSP: Rename")
-  map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, "LSP: Code action")
-  map("n", "<leader>sh", vim.lsp.buf.signature_help, "LSP: Signature help")
+  end, "LSP: Go to definition (vsplit)", opts)
+  keymap.nmap("gd", vim.lsp.buf.definition, "LSP: Go to definition", opts)
+  keymap.nmap("gD", vim.lsp.buf.declaration, "LSP: Go to declaration", opts)
+  keymap.nmap("gi", vim.lsp.buf.implementation, "LSP: Go to implementation", opts)
+  keymap.nmap("gt", vim.lsp.buf.type_definition, "LSP: Go to type", opts)
+  keymap.nmap("<leader>rn", vim.lsp.buf.rename, "LSP: Rename", opts)
+  keymap.map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
+  keymap.nmap("<leader>sh", vim.lsp.buf.signature_help, "LSP: Signature help", opts)
 
   -- Diagnostics
-  map("n", "[d", vim.diagnostic.goto_prev, "Diag: Prev")
-  map("n", "]d", vim.diagnostic.goto_next, "Diag: Next")
-  map("n", "<leader>e", vim.diagnostic.open_float, "Diag: Line info")
-  map("n", "<leader>q", vim.diagnostic.setloclist, "Diag: To loclist")
+  keymap.nmap("[d", vim.diagnostic.goto_prev, "Diag: Prev", opts)
+  keymap.nmap("]d", vim.diagnostic.goto_next, "Diag: Next", opts)
+  keymap.nmap("<leader>e", vim.diagnostic.open_float, "Diag: Line info", opts)
+  keymap.nmap("<leader>q", vim.diagnostic.setloclist, "Diag: To loclist", opts)
 
   -- Formatting (use Conform.nvim with LSP fallback)
-  map({ "n", "v" }, "<leader>f", function()
+  keymap.map({ "n", "v" }, "<leader>f", function()
     require("conform").format { async = true, lsp_fallback = true }
-  end, "Format with Conform")
+  end, { buffer = bufnr, desc = "Format with Conform" })
 
   -- Inlay hints toggle (NVIM ≥0.10)
   if vim.lsp.inlay_hint then
-    map("n", "<leader>lh", function()
+    keymap.nmap("<leader>lh", function()
       local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
       vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
-    end, "LSP: Toggle inlay hints")
+    end, "LSP: Toggle inlay hints", opts)
   end
 end
 

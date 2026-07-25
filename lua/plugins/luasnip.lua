@@ -6,21 +6,22 @@ return {
 
   config = function()
     local ls = require "luasnip"
-    vim.keymap.set({ "i" }, "<C-K><C-K>", function()
+    local keymap = require "shino.keymap"
+    keymap.map({ "i" }, "<C-K><C-K>", function()
       ls.expand()
-    end, { silent = true })
-    vim.keymap.set({ "i", "s" }, "<C-K><C-L>", function()
+    end, { desc = "LuaSnip: Expand" })
+    keymap.map({ "i", "s" }, "<C-K><C-L>", function()
       ls.jump(1)
-    end, { silent = true })
-    vim.keymap.set({ "i", "s" }, "<C-K><C-J>", function()
+    end, { desc = "LuaSnip: Jump forward" })
+    keymap.map({ "i", "s" }, "<C-K><C-J>", function()
       ls.jump(-1)
-    end, { silent = true })
+    end, { desc = "LuaSnip: Jump backward" })
 
-    vim.keymap.set({ "i", "s" }, "<C-K><C-E>", function()
+    keymap.map({ "i", "s" }, "<C-K><C-E>", function()
       if ls.choice_active() then
         ls.change_choice(1)
       end
-    end, { silent = true })
+    end, { desc = "LuaSnip: Next choice" })
 
     -- Load snippets from separate files
     local snippet_files = {

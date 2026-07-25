@@ -27,22 +27,23 @@ return {
         -- Enable inline completion
         vim.lsp.inline_completion.enable(false, { bufnr = bufnr })
 
-        vim.keymap.set("i", "<c-e>", function()
+        local keymap = require "shino.keymap"
+        keymap.imap("<c-e>", function()
           vim.lsp.inline_completion.get()
           if vim.fn.pumvisible() == 1 then
             return "<c-e>"
           end
-        end, { silent = true, expr = true, buffer = bufnr })
+        end, "Copilot: Trigger inline completion", { expr = true, buffer = bufnr })
         -- Select inline completions
-        vim.keymap.set("i", "<c-f>", function()
+        keymap.imap("<c-f>", function()
           vim.lsp.inline_completion.select()
-        end, { silent = true, buffer = bufnr })
-        vim.keymap.set("i", "<c-b>", function()
+        end, "Copilot: Next inline completion", { buffer = bufnr })
+        keymap.imap("<c-b>", function()
           vim.lsp.inline_completion.select { count = -1 * vim.v.count1 }
-        end, { silent = true, buffer = bufnr })
-        vim.keymap.set("n", "<leader>sc", function()
+        end, "Copilot: Previous inline completion", { buffer = bufnr })
+        keymap.nmap("<leader>sc", function()
           vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled())
-        end, { desc = "Toggle Copilot Suggestions", buffer = bufnr })
+        end, "Toggle Copilot Suggestions", { buffer = bufnr })
       end,
     })
   end,
