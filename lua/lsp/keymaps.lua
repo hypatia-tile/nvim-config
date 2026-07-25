@@ -19,14 +19,18 @@ function M.lsp_keymap(bufnr)
   keymap.nmap("<leader>sh", vim.lsp.buf.signature_help, "LSP: Signature help", opts)
 
   -- Diagnostics
-  keymap.nmap("[d", vim.diagnostic.goto_prev, "Diag: Prev", opts)
-  keymap.nmap("]d", vim.diagnostic.goto_next, "Diag: Next", opts)
+  keymap.nmap("[d", function()
+    vim.diagnostic.jump { count = -1, float = true }
+  end, "Diag: Prev", opts)
+  keymap.nmap("]d", function()
+    vim.diagnostic.jump { count = 1, float = true }
+  end, "Diag: Next", opts)
   keymap.nmap("<leader>e", vim.diagnostic.open_float, "Diag: Line info", opts)
   keymap.nmap("<leader>q", vim.diagnostic.setloclist, "Diag: To loclist", opts)
 
   -- Formatting (use Conform.nvim with LSP fallback)
   keymap.map({ "n", "v" }, "<leader>f", function()
-    require("conform").format { async = true, lsp_fallback = true }
+    require("conform").format { async = true, lsp_format = "fallback" }
   end, { buffer = bufnr, desc = "Format with Conform" })
 
   -- Inlay hints toggle (NVIM ≥0.10)

@@ -29,7 +29,7 @@ return {
         if vim.bo[bufnr].filetype == "haskell" then
           return
         end
-        return { timeout_ms = 10000, lsp_fallback = false }
+        return { timeout_ms = 10000, lsp_format = "never" }
       end,
     }
 
