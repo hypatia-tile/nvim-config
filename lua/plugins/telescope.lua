@@ -38,10 +38,11 @@ return {
     telescope.load_extension "hoogle"
 
     local builtin = require "telescope.builtin"
-    vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope: Find files" })
-    vim.keymap.set("n", "sg", builtin.live_grep, { desc = "Telescope: Live grep" })
-    vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Telescope: LSP references" })
-    vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "Telescope LSP Doc symbols" })
-    vim.keymap.set("n", "<leader>sS", builtin.lsp_workspace_symbols, { desc = "Telescope LSP WS symbols" })
+    local keymap = require "shino.keymap"
+    keymap.nmap("<C-p>", builtin.find_files, "Telescope: Find files")
+    keymap.nmap("sg", builtin.live_grep, "Telescope: Live grep")
+    keymap.nmap("gr", builtin.lsp_references, "Telescope: LSP references")
+    keymap.nmap("<leader>ss", builtin.lsp_document_symbols, "Telescope LSP Doc symbols")
+    keymap.nmap("<leader>sS", builtin.lsp_workspace_symbols, "Telescope LSP WS symbols")
   end,
 }
