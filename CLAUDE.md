@@ -137,6 +137,15 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 ### Custom Modules (`lua/shino/`)
 
 - `commands.lua` — `:InitLua` (open init.lua in editor)
+- `keymap.lua` — typed wrappers over `vim.keymap.set`. Prefer these over
+  `vim.keymap.set` directly:
+  - `map(mode, lhs, rhs, opts?)` — thin escape hatch for multi-mode or
+    unusual mappings; `desc` optional. Defaults `silent = true`.
+  - `nmap`/`imap`/`vmap`/`xmap(lhs, rhs, desc, opts?)` — per-mode helpers
+    with `desc` **required** (every semantic mapping is self-documenting).
+    Buffer-local mappings pass `{ buffer = bufnr }` via `opts`.
+  - `opts` borrows Neovim's `vim.keymap.set.Opts` type, so field completion
+    survives. Do not add dynamic dispatch (`__index`); it defeats LuaLS.
 
 ### Colorscheme
 
