@@ -30,7 +30,7 @@ function M.lsp_keymap(bufnr)
 
   -- Formatting (use Conform.nvim with LSP fallback)
   keymap.map({ "n", "v" }, "<leader>f", function()
-    require("conform").format { async = true, lsp_fallback = true }
+    require("conform").format { async = true, lsp_format = "fallback" }
   end, { buffer = bufnr, desc = "Format with Conform" })
 
   -- Inlay hints toggle (NVIM ≥0.10)
