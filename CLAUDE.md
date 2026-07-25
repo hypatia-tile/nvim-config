@@ -51,7 +51,7 @@ Run manually:
 stylua lua/ after/ ftplugin/ init.lua
 ```
 
-Format-on-save via Conform is enabled for Lua (stylua), Nix (alejandra), and disabled for Haskell (fourmolu must be run manually with `<leader>f`).
+Format-on-save via Conform is enabled for Lua (stylua), Nix (nixfmt), and disabled for Haskell (fourmolu must be run manually with `<leader>f`).
 
 ## CI
 

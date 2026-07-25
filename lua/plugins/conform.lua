@@ -20,7 +20,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         haskell = { "fourmolu" },
-        nix = { "alejandra" },
+        nix = { "nixfmt" },
       },
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
