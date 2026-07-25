@@ -1,56 +1,47 @@
 return {
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
-    config = function()
-      require("telescope").setup {
-        defaults = {
-          vimgrep_arguments = {
-            "rg",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-            "--hidden",
-            "--glob=!.git/**",
-          },
-          file_ignore_patterns = { "^%.git/" },
-        },
-        pickers = {
-          find_files = {
-            hidden = true,
-          },
-        },
-      }
-      local builtin = require "telescope.builtin"
-      vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope: Find files" })
-      vim.keymap.set("n", "sg", builtin.live_grep, { desc = "Telescope: Live grep" })
-      vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Telescope: LSP references" })
-      vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "Telescope LSP Doc symbols" })
-      vim.keymap.set("n", "<leader>sS", builtin.lsp_workspace_symbols, { desc = "Telescope LSP WS symbols" })
-    end,
-  },
-  {
+  "nvim-telescope/telescope.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
-      require("telescope").setup {
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown {},
-          },
-        },
-      }
-      require("telescope").load_extension "ui-select"
-    end,
-  },
-  {
     "luc-tielen/telescope_hoogle",
-    config = function()
-      local telescope = require "telescope"
-      telescope.load_extension "hoogle"
-    end,
   },
+  event = "VeryLazy",
+  config = function()
+    local telescope = require "telescope"
+    telescope.setup {
+      defaults = {
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--glob=!.git/**",
+        },
+        file_ignore_patterns = { "^%.git/" },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown {},
+        },
+      },
+    }
+    telescope.load_extension "ui-select"
+    telescope.load_extension "hoogle"
+
+    local builtin = require "telescope.builtin"
+    vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Telescope: Find files" })
+    vim.keymap.set("n", "sg", builtin.live_grep, { desc = "Telescope: Live grep" })
+    vim.keymap.set("n", "gr", builtin.lsp_references, { desc = "Telescope: LSP references" })
+    vim.keymap.set("n", "<leader>ss", builtin.lsp_document_symbols, { desc = "Telescope LSP Doc symbols" })
+    vim.keymap.set("n", "<leader>sS", builtin.lsp_workspace_symbols, { desc = "Telescope LSP WS symbols" })
+  end,
 }
