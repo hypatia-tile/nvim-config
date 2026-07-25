@@ -20,7 +20,6 @@ return {
         },
         automatic_installation = {
           exclude = {
-            "ts_ls",
             "denols",
           },
         },
