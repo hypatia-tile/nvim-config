@@ -15,10 +15,14 @@ return {
       return sn(nil, { i(1, guard) })
     end),
     t { "", "#define " },
-    f(function(args) return args[1][1] end, { 1 }),
+    f(function(args)
+      return args[1][1]
+    end, { 1 }),
     t { "", "", "" },
     i(2),
     t { "", "#endif // " },
-    f(function(args) return args[1][1] end, { 1 }),
+    f(function(args)
+      return args[1][1]
+    end, { 1 }),
   }),
 }

@@ -14,5 +14,4 @@ vim.opt_local.tabstop = 2
 vim.opt_local.textwidth = 100
 
 -- Cleanup on filetype change
-vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "")
-  .. " | setlocal shiftwidth< tabstop< textwidth<"
+vim.b.undo_ftplugin = (vim.b.undo_ftplugin or "") .. " | setlocal shiftwidth< tabstop< textwidth<"

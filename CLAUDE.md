@@ -6,38 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a Neovim configuration based on [lazy.nvim](https://github.com/folke/lazy.nvim) (not LazyVim — `lazyvim.json` enables a few LazyVim extras but the core setup is custom). The config targets Neovim 0.11+ and uses the native LSP API (`vim.lsp.config`/`vim.lsp.enable`) rather than nvim-lspconfig's setup helpers.
 
-## Claude's role: coach, not author
-
-The owner is a long-time Neovim user; the goal of this repository is now the
-owner's deep mastery of Lua and the Neovim API, not just a working config.
-From this point on the owner writes all configuration changes themselves.
-
-- Claude MUST NOT edit the Lua configuration: `init.lua`, `lua/`, `after/`,
-  and `ftplugin/`.
-- Give feedback as a coach: point out bugs, non-idiomatic Lua, misuse of the
-  Neovim API, lazy.nvim spec mistakes, startup impact, and convention
-  violations — but do not hand over finished fix code. Explain why something
-  is a problem and name the exact function, option, or help tag to look up
-  (e.g. "see `:h vim.keymap.set()`").
-- Exceptions to the edit ban:
-  - Generated files (`lazy-lock.json`) are machine-written and out of scope.
-  - Minimal fix code may be shown when the config fails to load or a change
-    risks data loss.
-- Claude owns the meta layer only: this file, `.claude/skills/`, `bin/`,
-  `docs/adr/` scaffolding, and (later) CI.
-
 ## Decision records
 
-- Decision-class changes (policy, structure, tool adoption) are gated on an
-  ADR, as in `.emacs.d`: once a decision is reached in conversation, the
-  owner writes the ADR in `docs/adr/` (English, one file per decision,
-  `NNNN-kebab-case-title.md`, based on `docs/adr/template.md`), and only
-  then does the decision take effect. Progress is bounded by what the owner
-  can state in their own words — that articulation is itself the learning
-  goal.
-- After the ADR is written, Claude updates this file and the skills to
-  match it.
-- Day-to-day configuration edits do not require an ADR.
+- Decisions about this config that are not obvious from the code are
+  written up as ADRs in `docs/adr/` (English, one file per decision,
+  `NNNN-kebab-case-title.md`, based on `docs/adr/template.md`). See
+  `docs/adr/README.md`.
+- ADRs are documentation, not a gate: they record decisions but do not
+  block changes. Reserve them for decision-class changes (policy,
+  structure, tool adoption); day-to-day configuration edits need none.
 
 ## Language policy
 
@@ -48,19 +25,6 @@ From this point on the owner writes all configuration changes themselves.
 ## Commit conventions
 
 - Conventional Commits, in English: `type(scope): subject`.
-- The owner writes every commit message for their own changes;
-  `/commit-review` coaches them.
-
-## Review skills
-
-- `/nvim-review` (in `.claude/skills/`) reviews uncommitted changes by
-  default, or the last commit when the working tree is clean. It runs
-  `bin/check` before reading the diff. Coaching style as defined above;
-  review output is in Japanese.
-- `/commit-review` reviews a commit message written by the owner. Form
-  issues (typos, format) may be corrected directly; content gaps are
-  addressed with guiding questions only — never with example sentences,
-  even on request.
 
 ## Trying the config from this repo
 
@@ -88,6 +52,15 @@ stylua lua/ after/ ftplugin/ init.lua
 ```
 
 Format-on-save via Conform is enabled for Lua (stylua), Nix (alejandra), and disabled for Haskell (fourmolu must be run manually with `<leader>f`).
+
+## CI
+
+GitHub Actions (`.github/workflows/ci.yml`) runs on pull requests and on
+pushes to `main`. Two required checks:
+- **stylua**: `stylua --check` on `lua/ after/ ftplugin/ init.lua`.
+- **check**: `bin/check` — headless startup with a `lazy-lock.json`-faithful
+  plugin restore. Installs Neovim and Deno (needed by denops/skkeleton) and
+  caches the `nvim-dev` plugin dir across runs.
 
 ## Debugging
 
