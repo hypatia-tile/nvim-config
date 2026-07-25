@@ -20,7 +20,6 @@ return {
         },
         automatic_installation = {
           exclude = {
-            "rust_analyzer",
             "ts_ls",
             "denols",
           },
