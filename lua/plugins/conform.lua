@@ -21,6 +21,9 @@ return {
         lua = { "stylua" },
         haskell = { "fourmolu" },
         nix = { "nixfmt" },
+        -- ocamlformat only runs when a .ocamlformat file exists at the project
+        -- root; otherwise it no-ops (see docs/adr/0001).
+        ocaml = { "ocamlformat" },
       },
       format_on_save = function(bufnr)
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
