@@ -15,13 +15,13 @@ return {
     end
   end,
   on_init = function()
-    local hlc = vim.api.nvim_get_hl(0, { name = "Comment" })
-    vim.api.nvim_set_hl(0, "ComplHint", vim.tbl_extend("force", hlc, { underline = true }))
-    local hlm = vim.api.nvim_get_hl(0, { name = "MoreMsg" })
-    vim.api.nvim_set_hl(0, "ComplHintMore", vim.tbl_extend("force", hlm, { underline = true }))
+    local hl = require "shino.highlight"
+    hl.extend("ComplHint", "Comment", { underline = true })
+    hl.extend("ComplHintMore", "MoreMsg", { underline = true })
     -- Enable inline completion via LspAttach autocmd
-    vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("CopilotAttach", { clear = true }),
+    local au = require "shino.autocmd"
+    au.autocmd("LspAttach", "Set up Copilot inline completion keymaps on attach", {
+      group = au.group "CopilotAttach",
       callback = function(args)
         local bufnr = args.buf
         -- Enable inline completion

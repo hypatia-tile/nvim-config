@@ -3,9 +3,8 @@ return {
   lazy = false,
   config = function()
     -- Set up VimTeX Which-Key mappings on FileType tex
-    vim.api.nvim_create_autocmd("FileType", {
+    require("shino.autocmd").autocmd("FileType", "Set up VimTeX Which-Key descriptions", {
       pattern = "tex",
-      desc = "Set up VimTeX Which-Key descriptions",
       callback = function(event)
         local wk_avail, wk = pcall(require, "which-key")
         if not wk_avail then

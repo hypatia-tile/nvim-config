@@ -17,7 +17,7 @@ vim.opt.pumblend = 0 -- transparency for popup menu
 
 -- emphasize cursorline
 vim.opt.cursorline = true
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff9e64", bold = true })
+require("shino.highlight").set("CursorLineNr", { fg = "#ff9e64", bold = true })
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true

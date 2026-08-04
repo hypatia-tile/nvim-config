@@ -25,7 +25,12 @@ return {
     end
 
     -- Custom Telescope selection highlight
-    vim.cmd "highlight TelescopeSelection cterm=bold gui=bold guifg=#a6e3a1 guibg=#181825"
+    require("shino.highlight").set("TelescopeSelection", {
+      bold = true,
+      cterm = { bold = true },
+      fg = "#a6e3a1",
+      bg = "#181825",
+    })
 
     -- Transparency toggle keymap
     require("shino.keymap").nmap("<leader>tp", function()

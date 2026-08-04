@@ -162,6 +162,16 @@ LSP mappings are buffer-local, attached on every `LspAttach`
     Buffer-local mappings pass `{ buffer = bufnr }` via `opts`.
   - `opts` borrows Neovim's `vim.keymap.set.Opts` type, so field completion
     survives. Do not add dynamic dispatch (`__index`); it defeats LuaLS.
+- `autocmd.lua` — typed wrappers over `nvim_create_autocmd`/`augroup`. Prefer
+  these over the raw API:
+  - `autocmd(event, desc, opts)` — `desc` **required** (self-documenting);
+    `opts` borrows `vim.api.keyset.create_autocmd`.
+  - `group(name)` — cleared-augroup shorthand.
+- `highlight.lua` — typed wrappers over `nvim_set_hl` (global namespace):
+  - `set(name, val)` — drops the `0` namespace; `val` borrows
+    `vim.api.keyset.highlight`.
+  - `extend(name, base, val)` — define a group by inheriting `base` and
+    merging `val` over it.
 
 ### Colorscheme
 
