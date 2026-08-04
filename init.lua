@@ -10,12 +10,6 @@ require "config.lazy"
 require "shino.commands"
 require "lsp.init"
 
--- Folding settings
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevel = 99
-vim.opt.foldmethod = "expr"
-vim.opt.foldtext = ""
-
 -- Arrow keys resize windows in normal mode
 keymap.nmap("<Right>", "<c-w>>", "Write right arrow")
 keymap.nmap("<Left>", "<c-w><", "Write left arrow")
