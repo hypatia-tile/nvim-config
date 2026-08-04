@@ -70,12 +70,13 @@ Use `nvim --startuptime /tmp/startup.log` to profile startup time.
 
 ### Entry Point
 
-`init.lua` bootstraps in this order:
-1. `vim-options` — global options and mapleader (`<Space>`)
-2. `autocmds` — global autocmds
-3. `config.lazy` — lazy.nvim bootstrap, loads all `lua/plugins/*.lua`
-4. `shino.commands` — user commands (`:InitLua`)
-5. `lsp.init` — global `LspAttach` handler and denols startup for TypeScript filetypes
+`init.lua` is a thin bootstrap — an ordered list of requires, nothing else:
+1. `vim-options` — global options (incl. folding) and mapleader (`<Space>`)
+2. `keymaps` — global, non-plugin keymaps (buffer nav, window resize, insert arrows)
+3. `autocmds` — global autocmds
+4. `config.lazy` — lazy.nvim bootstrap, loads all `lua/plugins/*.lua`
+5. `shino.commands` — user commands (`:InitLua`)
+6. `lsp.init` — global `LspAttach` handler and denols startup for TypeScript filetypes
 
 ### Plugin Structure
 
