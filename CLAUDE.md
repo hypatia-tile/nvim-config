@@ -105,7 +105,7 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 ### File-Type Specific Setup
 
 `after/ftplugin/<ft>.lua` files run after built-in ftplugins:
-- **haskell**: GHCi REPL toggle (`<leader>rr`/`<leader>rf`), Hoogle search (`<space>hs`), eval all (`<space>ea`)
+- **haskell**: GHCi REPL toggle (`<leader>rr`/`<leader>rf`), Hoogle search (`<leader>hs`), eval all (`<leader>ea`)
 - **rust**: rustaceanvim code actions (`<leader>a`) and hover actions (`K`)
 - **zig**: enables `zls` LSP
 - **java**: enables `jdtls` LSP
@@ -124,15 +124,30 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 | `<C-p>` | n | Telescope find files |
 | `sg` | n | Telescope live grep |
 | `gr` | n | Telescope LSP references |
-| `<leader>f` | n/v | Format (Conform + LSP fallback) |
-| `<leader>rn` | n | LSP rename |
-| `<leader>ca` | n/v | LSP code action |
-| `<leader>lh` | n | Toggle inlay hints |
-| `<leader>tp` | n | Toggle transparent background |
-| `<leader>sc` | n | Toggle Copilot suggestions |
 | `<C-h/j/k/l>` | n | Tmux/Neovim pane navigation |
+| `<leader>tp` | n | Toggle transparent background |
+| `<leader>tc` | n | Toggle Copilot suggestions |
 | Arrow keys | n | Resize windows |
 | Arrow keys | i | Insert Unicode arrows (←↑→↓) |
+
+LSP mappings are buffer-local, attached on every `LspAttach`
+(`lua/lsp/keymaps.lua`):
+
+| Key | Mode | Action |
+|-----|------|--------|
+| `K` | n | Hover |
+| `gd` / `gD` | n | Go to definition / declaration |
+| `gi` / `gt` | n | Go to implementation / type |
+| `<leader>gd` | n | Go to definition (below split) |
+| `<leader>k` | n | Signature help |
+| `<leader>rn` | n | Rename |
+| `<leader>ca` | n/v | Code action |
+| `<leader>f` | n/v | Format (Conform + LSP fallback) |
+| `<leader>lh` | n | Toggle inlay hints |
+| `<leader>ss` / `<leader>sS` | n | Telescope document / workspace symbols |
+| `[d` / `]d` | n | Previous / next diagnostic |
+| `<leader>e` | n | Diagnostic line info (float) |
+| `<leader>q` | n | Diagnostics to loclist |
 
 ### Custom Modules (`lua/shino/`)
 

@@ -4,11 +4,11 @@ local keymap = require "shino.keymap"
 local opts = { buffer = vim.api.nvim_get_current_buf() }
 -- haskell-language-server relies heavily on codeLenses,
 -- so auto-refresh (see advanced configuration) is enabled by default
-keymap.nmap("<space>cl", vim.lsp.codelens.run, "Haskell: Run code lens", opts)
+keymap.nmap("<leader>cl", vim.lsp.codelens.run, "Haskell: Run code lens", opts)
 -- Hoogle search for the type signature of the definition under the cursor
-keymap.nmap("<space>hs", ht.hoogle.hoogle_signature, "Haskell: Hoogle signature", opts)
+keymap.nmap("<leader>hs", ht.hoogle.hoogle_signature, "Haskell: Hoogle signature", opts)
 -- Evaluate all code snippets
-keymap.nmap("<space>ea", ht.lsp.buf_eval_all, "Haskell: Eval all", opts)
+keymap.nmap("<leader>ea", ht.lsp.buf_eval_all, "Haskell: Eval all", opts)
 -- Toggle a GHCi repl for the current package
 keymap.nmap("<leader>rr", ht.repl.toggle, "Haskell: Toggle REPL (package)", opts)
 -- Toggle a GHCi repl for the current buffer
