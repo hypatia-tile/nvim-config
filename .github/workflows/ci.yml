@@ -47,8 +47,8 @@ jobs:
         run: bin/check
 
   typecheck:
-    # Not yet in branch protection: informative while it is stabilized, then
-    # promoted to a required check once clean.
+    # Required status check on main (branch protection), alongside stylua and
+    # check.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
