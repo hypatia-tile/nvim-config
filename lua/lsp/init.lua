@@ -1,5 +1,7 @@
+local au = require "shino.autocmd"
+
 -- Global LspAttach autocmd to attach keymaps to all LSP clients
-vim.api.nvim_create_autocmd("LspAttach", {
+au.autocmd("LspAttach", "Attach global LSP keymaps on every client attach", {
   callback = function(args)
     require("lsp.keymaps").lsp_keymap(args.buf)
   end,
@@ -28,7 +30,7 @@ vim.lsp.config("denols", {
     },
   },
 })
-vim.api.nvim_create_autocmd("FileType", {
+au.autocmd("FileType", "Start denols for TypeScript/JavaScript buffers", {
   pattern = ts_filetypes,
   callback = function()
     local bufnr = vim.api.nvim_get_current_buf()
