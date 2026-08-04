@@ -22,6 +22,12 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff9e64", bold = true })
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- Folding via Treesitter, all folds open on open
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+
 vim.filetype.add {
   pattern = {
     ["compose.*%.ya?ml"] = "yaml.docker-compose",
