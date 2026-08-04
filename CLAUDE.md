@@ -51,7 +51,7 @@ Run manually:
 stylua lua/ after/ ftplugin/ init.lua
 ```
 
-Format-on-save via Conform is enabled for Lua (stylua), Nix (nixfmt), and disabled for Haskell (fourmolu must be run manually with `<leader>f`).
+Format-on-save via Conform is enabled for Lua (stylua), Nix (nixfmt), and OCaml (ocamlformat, only when a `.ocamlformat` file exists at the project root), and disabled for Haskell (fourmolu must be run manually with `<leader>f`).
 
 ## CI
 
@@ -87,7 +87,8 @@ All plugins live in `lua/plugins/*.lua` — each file returns a lazy.nvim plugin
 LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 - **Global keymaps**: `lua/lsp/keymaps.lua` — attached on every `LspAttach` event
 - **TypeScript (Deno only)**: `lua/lsp/init.lua` sets static `denols` options via `vim.lsp.config`, then a `FileType` autocmd calls `vim.lsp.start` per buffer, rooting at `deno.json`/`deno.jsonc` (falling back to the file's directory). Only Deno is supported; there is no `ts_ls`/tsserver path.
-- **Per-server configs**: `after/lsp/<server>.lua` — lua_ls, nil_ls, copilot, gh_actions_ls
+- **Per-server configs**: `after/lsp/<server>.lua` — lua_ls, nil_ls, copilot, gh_actions_ls, ocamllsp
+- **OCaml**: `ocamllsp` (opam-provided, see `docs/adr/0001`) with beginner-friendly defaults — inlay hints auto-enabled on attach, `extendedHover`, `syntaxDocumentation`. Enabled from `after/ftplugin/ocaml.lua`.
 - **Language-specific plugins** bypass the global attach: haskell-tools.nvim (Haskell), lean.nvim (Lean), nvim-jdtls (Java)
 
 ### Completion
@@ -110,6 +111,7 @@ LSP uses the Neovim 0.11+ native API instead of lspconfig setup calls:
 - **rust**: rustaceanvim code actions (`<leader>a`) and hover actions (`K`)
 - **zig**: enables `zls` LSP
 - **java**: enables `jdtls` LSP
+- **ocaml**: enables `ocamllsp` LSP
 
 `ftplugin/` (non-after) also has `java.lua` and `markdown.lua`.
 
