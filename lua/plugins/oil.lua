@@ -3,7 +3,7 @@ return {
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {},
-  -- Optional dependencies
-  dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+  -- Icons come from the shared mini.icons spec (lua/plugins/mini-icons.lua).
+  dependencies = { "nvim-mini/mini.icons" },
   lazy = false,
 }
