@@ -41,7 +41,7 @@ return {
         keymap.imap("<c-b>", function()
           vim.lsp.inline_completion.select { count = -1 * vim.v.count1 }
         end, "Copilot: Previous inline completion", { buffer = bufnr })
-        keymap.nmap("<leader>sc", function()
+        keymap.nmap("<leader>tc", function()
           vim.lsp.inline_completion.enable(not vim.lsp.inline_completion.is_enabled())
         end, "Toggle Copilot Suggestions", { buffer = bufnr })
       end,

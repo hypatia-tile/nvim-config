@@ -16,7 +16,7 @@ function M.lsp_keymap(bufnr)
   keymap.nmap("gt", vim.lsp.buf.type_definition, "LSP: Go to type", opts)
   keymap.nmap("<leader>rn", vim.lsp.buf.rename, "LSP: Rename", opts)
   keymap.map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "LSP: Code action" })
-  keymap.nmap("<leader>sh", vim.lsp.buf.signature_help, "LSP: Signature help", opts)
+  keymap.nmap("<leader>k", vim.lsp.buf.signature_help, "LSP: Signature help", opts)
 
   -- Diagnostics
   keymap.nmap("[d", function()
