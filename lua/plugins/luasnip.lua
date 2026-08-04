@@ -28,7 +28,6 @@ return {
       { lang = "all", file = "all" },
       { lang = "c", file = "c" },
       { lang = "cpp", file = "c" },
-      { lang = "lean", file = "lean" },
       { lang = "lua", file = "lua" },
       { lang = "nix", file = "nix" },
     }
